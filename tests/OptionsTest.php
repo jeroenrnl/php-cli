@@ -81,10 +81,10 @@ class OptionsTest extends \PHPUnit\Framework\TestCase
     {
         $options = new Options();
         $options->registerCommand('cmd', 'a command');
-        $this->assertStringContainsString('accepts a command as first parameter', $options->help());
+        $this->assertContains('accepts a command as first parameter', $options->help());
 
         $options->setCommandHelp('foooooobaar');
-        $this->assertStringNotContainsString('accepts a command as first parameter', $options->help());
-        $this->assertStringContainsString('foooooobaar', $options->help());
+        $this->assertNotContains('accepts a command as first parameter', $options->help());
+        $this->assertContains('foooooobaar', $options->help());
     }
 }
